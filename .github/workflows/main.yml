@@ -20,8 +20,6 @@ jobs:
           cache: 'npm'
       - name: Install
         run: npm install
-      - name: Unit tests and lint
-        run: npm run test:all
       - name: Build
         run: npm run build:all
       - name: Deploy documentation
