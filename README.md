@@ -1,25 +1,133 @@
-# Node.js & TypeScript Template
-This repository template includes the following features:
- * [Node.js](https://nodejs.org/) and [TypeScript](https://www.typescriptlang.org/) [v4.8](https://www.typescriptlang.org/docs/handbook/release-notes/overview.html) support
- * Support for [GitHub Codespaces](https://github.com/features/codespaces)
- * Support for [JetBrains IDEs](https://www.jetbrains.com/)
- * *Continuous integration* with [GitHub Actions](https://github.com/features/actions) and [Codesandbox CI](https://codesandbox.io/ci)
- * *Auto-bundling and minification* of source code with [Webpack](https://webpack.js.org/)
- * *Auto-generated documentation* of TS code with [TypeDoc](https://typedoc.org/)
- * *Auto-formatted code* with [ESLint](https://eslint.org/)
- * *Unit tests* with [Jest](https://jestjs.io/) framework
- * *Dependency updates* with [Renovate](https://github.com/marketplace/renovate)
-
-# {library-name}
+# @neoncitylights/ts-html-walker
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![GitHub deployments](https://img.shields.io/github/deployments/samantha-labs/ts-scale/github-pages?label=deploy)](https://github.com/samantha-labs/ts-scale/deployments/activity_log?environment=github-pages)
-[![Node.js workflow](https://github.com/samantha-labs/node-ts-template/actions/workflows/main.yml/badge.svg)](https://github.com/samantha-labs/node-ts-template/actions/workflows/main.yml)
+[![GitHub deployments](https://img.shields.io/github/deployments/neoncitylights/ts-html-walker/github-pages?label=deploy)](https://github.com/neoncitylights/ts-html-walker/deployments/activity_log?environment=github-pages)
+[![Node.js workflow](https://github.com/neoncitylights/ts-html-walker/actions/workflows/main.yml/badge.svg)](https://github.com/neoncitylights/ts-html-walker/actions/workflows/main.yml)
 
-Describe the library.
+This library provides some utilities for walking through specific HTML elements and turning into machine-readable data.
 
 ## Install
 ```
-npm install @samantha-labs/{library-name}
+npm install @neoncitylights/ts-html-walker
+```
+
+## Usage
+### Walking through a description list (`<dl>`)
+```html
+<dl id="prefs">
+	<div>
+		<dt>Extensions</dt>
+		<dd>Remove, install, and change settings of extensions</dd>
+	</div>
+	<div>
+		<dt>Site activity</dt>
+		<dd>Learn how visitors are using your site</dd>
+	</div>
+	<div>
+		<dt>Layout and appearance</dt>
+		<dd>Change how your site appears to viewers</dd>
+	</div>
+	<div>
+		<dt>Privacy</dt>
+		<dd>Decide who is able to access your site</dd>
+	</div>
+	<div>
+		<dt>Security and storage</dt>
+		<dd>Backup, update, and protect your site</dd>
+	</div>
+</dl>
+```
+
+```ts
+import { walkDescriptionList } from '@neoncitylights/ts-html-walker';
+
+const prefsElement = document.getElementById('prefs') as HTMLDListElement;
+const prefs = walkDescriptionList(prefsElement);
+```
+
+```json
+{
+	"Extensions": "Remove, install, and change settings of extensions",
+	"Site activity": "Learn how visitors are using your site",
+	"Layout and appearance": "Change how your site appears to viewers",
+	"Privacy": "Decide who is able to access your site",
+	"Security and storage": "Backup, update, and protect your site."
+}
+```
+
+### Walking through a table (`<table>`)
+```html
+<table class="wikitable" id="timezone-examples">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Explanation</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><a href="/wiki/America/Costa_Rica">America/Costa_Rica</a></td>
+			<td>name of country used because the name of the largest city (and capital city) <a href="/wiki/San_Jos%C3%A9,_Costa_Rica" >San José</a> is <a href="/wiki/San_Jos%C3%A9_(disambiguation)#Places">ambiguous</a></td>
+		</tr>
+		<tr>
+			<td><a href="/wiki/America/New_York">America/New_York</a></td>
+			<td>Space replaced with underscore</td>
+		</tr>
+		<tr>
+			<td><a href="/wiki/Asia/Kolkata">Asia/Kolkata</a></td>
+			<td>name of city of <a href="/wiki/Kolkata">Kolkata</a> used, because it was the most populous city in the zone at the time the zone was set up, though this is no longer true<sup><a href="#cite_note-17">[17]</a></sup></td>
+		</tr>
+		<tr>
+			<td><a href="/wiki/Asia/Sakhalin">Asia/Sakhalin</a></td>
+			<td>name of island used, because largest city, <a href="/wiki/Yuzhno-Sakhalinsk">Yuzhno-Sakhalinsk</a>, has more than 14 characters</td>
+		</tr>
+		<tr>
+			<td><a href="/wiki/America/Bahia_Banderas">America/Bahia_Banderas</a></td>
+			<td>"de" removed from <a href="/wiki/Bahia_de_Banderas">Bahia de Banderas</a>, because correct name has more than 14 characters</td>
+		</tr>
+		<tr>
+			<td><a href="/wiki/Antarctica/DumontDUrville">Antarctica/DumontDUrville</a></td>
+			<td>the apostrophe is removed. The space would normally be replaced with "_", but the name would then exceed 14 characters.</td>
+		</tr>
+	</tbody>
+</table>
+```
+
+```ts
+import { walkTable } from '@neoncitylights/ts-html-walker';
+
+let timezoneTableElement = document.getElementById('timezone-examples') as HTMLTableElement;
+let timezoneExamples = walkTable(timezoneTableElement);
+```
+
+```json
+[
+	[
+		{
+			"Name": "America/Costa_Rica",
+			"Explanation": "name of country used because the name of the largest city (and capital city) San José is ambiguous"
+		},
+		{
+			"Name": "America/New_York",
+			"Explanation": "Space replaced with underscore"
+		},
+		{
+			"Name": "Asia/Kolkata",
+			"Explanation": "name of city of Kolkata used, because it was the most populous city in the zone at the time the zone was set up, though this is no longer true[17]"
+		},
+		{
+			"Name": "Asia/Sakhalin",
+			"Explanation": "name of island used, because largest city, Yuzhno-Sakhalinsk, has more than 14 characters"
+		},
+		{
+			"Name": "America/Bahia_Banderas",
+			"Explanation": "de removed from Bahia de Banderas, because correct name has more than 14 characters"
+		},
+		{
+			"Name": "Antarctica/DumontDUrville",
+			"Explanation": "the apostrophe is removed. The space would normally be replaced with \"_\", but the name would then exceed 14 characters."
+		}
+	]
+]
 ```
 
 ## License
