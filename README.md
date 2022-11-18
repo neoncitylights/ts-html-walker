@@ -73,7 +73,9 @@ let timezones = walkTable(timezonesTable);
 import { walkDescriptionList } from '@neoncitylights/html-walker';
 
 const prefsElement = document.getElementById('prefs') as HTMLDListElement;
-const prefs = walkDescriptionList(prefsElement);
+const prefs = walkDescriptionList(prefsElement,
+	(term) => term.textContent,
+	(details) => details.textContent));
 ```
 
 ```json
