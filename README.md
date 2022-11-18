@@ -14,17 +14,22 @@ npm install @neoncitylights/html-walker
 [Auto-generated API documentation is available](https://neoncitylights.github.io/ts-html-walker/).
 
 ### API Reference
-#### Walkers
- * <a href="#walkDescriptionList">#</a> **walkDescriptionList**<*K*, *V*>(*element*, *termCallback*, *detailsCallback*): *Map<K, V>* • [source](./src/walkDescriptionList.ts)
- * <a href="#walkTable">#</a> **walkTable**(*table*): *TableRow[][]* • [source](./src/walkTable.ts)
+#### Walker functions
+ * *fn*: <a href="#walkDescriptionList">#</a> walkDescriptionList.**walkDescriptionList**<*K*, *V*>(*element*, *termCallback*, *detailsCallback*): *Map<K, V>* • [source](./src/walkDescriptionList.ts)
+ * *fn*: <a href="#walkTable">#</a> walkTable.**walkTable**(*table*): *TableRow[][]* • [source](./src/walkTable.ts)
+
+### Walker helper utilities
+ * *T*: <a href="#TableBodies">#</a> walkTable.**TableBodies** • [source](./src/walkTable.ts)
+ * *T*: <a href="#TableRow">#</a> walkTable.**TableRow** • [source](./src/walkTable.ts)
+ * *fn*: <a href="#collectProperties">#</a> walkTable.**collectProperties**(*table*): *string*[] • [source](./src/walkTable.ts)
+ * *fn*: <a href="#collectTableBodies">#</a> walkTable.**collectTableBodies**(*table*): [*TableBodies*](./src/walkTable.ts) • [source](./src/walkTable.ts)
+ * *fn*: <a href="#collectDataRows">#</a> walkTable.**collectRows**(*table*): [*TableRow*](src/walkTable.ts) • [source](./src/walkTable.ts)
 
 #### Table utilities
- * <a href="#isTableRelatedElement">#</a> tableUtils.**isTableRelatedElement**(*element*): *boolean* • [source](./src/tableUtils.ts)
- * <a href="#getClosestParentTableElement">#</a> tableUtils.**getClosestParentTableElement**(*element*): *HTMLTableElement*|*undefiend* • [source](./src/tableUtils.ts)
- * <a href="#getTableCaption">#</a> tableUtils.**getTableCaption**(*element*): *string* • [source](./src/tableUtils.ts)
- * <a href="#getClosestParentTableElement">#</a> tableUtils.**getClosestParentTableElement**(*element*): *HTMLTableElement*|*undefiend* • [source](./src/tableUtils.ts)
- * <a href="#getClosestParentTableElementFromRow">#</a> tableUtils.**getClosestParentTableElementFromRow**(*row*): *HTMLTableElement* • [source](./src/tableUtils.ts)
-
+ * *fn*: <a href="#isTableRelatedElement">#</a> tableUtils.**isTableRelatedElement**(*element*): *boolean* • [source](./src/tableUtils.ts)
+ * *fn*: <a href="#getTableCaption">#</a> tableUtils.**getTableCaption**(*element*): *string* • [source](./src/tableUtils.ts)
+ * *fn*: <a href="#getClosestParentTableElement">#</a> tableUtils.**getClosestParentTableElement**(*element*): *HTMLTableElement*|*undefiend* • [source](./src/tableUtils.ts)
+ * *fn*: <a href="#getClosestParentTableElementFromRow">#</a> tableUtils.**getClosestParentTableElementFromRow**(*row*): *HTMLTableElement* • [source](./src/tableUtils.ts)
 
 ## Usage
 ```ts
