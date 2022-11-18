@@ -1,5 +1,5 @@
 {
-	"name": "@neoncitylights/ts-html-walker",
+	"name": "@neoncitylights/html-walker",
 	"version": "0.0.0",
 	"description": "{description}",
 	"license": "MIT",
@@ -7,10 +7,6 @@
 		"name": "Samantha",
 		"url": "https://github.com/neoncitylights"
 	},
-	"keywords": [
-		"progression",
-		"sequences"
-	],
 	"bugs": "https://github.com/neoncitylights/ts-html-walker/issues",
 	"repository": {
 		"type": "git",
@@ -38,6 +34,7 @@
 		"lint": "eslint src --ext .ts,.tsx",
 		"lint:fix": "eslint --fix src --ext .ts,.tsx",
 		"prepare": "npm run build",
+		"prepublishOnly": "npm run lint",
 		"preversion": "npm run lint",
 		"version": "npm run lint && git add -A src",
 		"postversion": "git push && git push --tags"
