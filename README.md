@@ -10,7 +10,39 @@ This library provides some utilities for walking through specific HTML elements 
 npm install @neoncitylights/html-walker
 ```
 
+## Documentation
+[Auto-generated API documentation is available](https://neoncitylights.github.io/ts-html-walker/).
+
+### API Reference
+#### Walkers
+ * <a href="#walkDescriptionList">#</a> **walkDescriptionList**<*K*, *V*>(*element*, *termCallback*, *detailsCallback*): *Map<K, V>* • [source](./src/walkDescriptionList.ts)
+ * <a href="#walkTable">#</a> **walkTable**(*table*): *TableRow[][]* • [source](./src/walkTable.ts)
+
+#### Table utilities
+ * <a href="#isTableRelatedElement">#</a> tableUtils.**isTableRelatedElement**(*element*): *boolean* • [source](./src/tableUtils.ts)
+ * <a href="#getClosestParentTableElement">#</a> tableUtils.**getClosestParentTableElement**(*element*): *HTMLTableElement*|*undefiend* • [source](./src/tableUtils.ts)
+ * <a href="#getTableCaption">#</a> tableUtils.**getTableCaption**(*element*): *string* • [source](./src/tableUtils.ts)
+ * <a href="#getClosestParentTableElement">#</a> tableUtils.**getClosestParentTableElement**(*element*): *HTMLTableElement*|*undefiend* • [source](./src/tableUtils.ts)
+ * <a href="#getClosestParentTableElementFromRow">#</a> tableUtils.**getClosestParentTableElementFromRow**(*row*): *HTMLTableElement* • [source](./src/tableUtils.ts)
+
+
 ## Usage
+```ts
+import { walkDescriptionList, walkTable } from '@neoncitylights/html-walker';
+
+// walking through a description list
+let descListElement = document.querySelector('dl#my-description-list') as HTMLDListElement;
+let descList = walkDescriptionList(
+	descListElement,
+	(term) => term.textContent,
+	(details) => details.textContent);
+
+// walking through a table
+let timezonesTable = document.querySelector('table') as HTMLTableElement;
+let timezones = walkTable(timezonesTable);
+```
+
+## Full examples
 ### Walking through a description list (`<dl>`)
 ```html
 <dl id="prefs">
