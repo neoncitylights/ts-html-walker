@@ -10,7 +10,7 @@ export function walkTable(table: HTMLTableElement): TableBodies {
 }
 
 export function collectProperties(table: HTMLTableElement): string[] {
-	let dataProps: string[] = [];
+	const dataProps: string[] = [];
 	const tHeads = table.tHead?.getElementsByTagName('th') as HTMLCollectionOf<HTMLTableHeaderCellElement>;
 
 	Array.from(tHeads).forEach(tHead => {
@@ -21,7 +21,7 @@ export function collectProperties(table: HTMLTableElement): string[] {
 }
 
 export function collectTableBodies(table: HTMLTableElement, properties: string[]): TableBodies {
-	let dataBodies: TableBodies = [];
+	const dataBodies: TableBodies = [];
 
 	Array.from(table.tBodies).forEach(tableBody => {
 		dataBodies.push(collectDataRows(tableBody, properties));
@@ -32,7 +32,7 @@ export function collectTableBodies(table: HTMLTableElement, properties: string[]
 
 export function collectDataRows(
 	tableBody: HTMLTableSectionElement,
-	dataProps: string[]
+	dataProps: string[],
 ): TableRow[] {
 	const dataRows: TableRow[] = [];
 

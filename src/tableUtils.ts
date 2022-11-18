@@ -3,7 +3,7 @@
  * `<table>`, `<caption>`, `<colgroup>`, `<thead>`, `<tbody>`, `<tr>`, `<td>`
  * or `<tfoot>`
  */
- export function isTableRelatedElement(element: HTMLElement): boolean {
+export function isTableRelatedElement(element: HTMLElement): boolean {
 	return [
 		'TABLE',
 		'CAPTION',

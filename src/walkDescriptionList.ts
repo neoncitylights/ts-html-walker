@@ -1,6 +1,6 @@
-export const ELEMENT_NAME_DIV: string = 'DIV';
-export const ELEMENT_NAME_DT: string = 'DT';
-export const ELEMENT_NAME_DD: string = 'DD';
+export const ELEMENT_NAME_DIV = 'DIV';
+export const ELEMENT_NAME_DT = 'DT';
+export const ELEMENT_NAME_DD = 'DD';
 export type DListCallback<T> = (element: HTMLElement) => T;
 
 /**
@@ -14,17 +14,17 @@ export type DListCallback<T> = (element: HTMLElement) => T;
 export function walkDescriptionList<K,V>(
 	element: HTMLDListElement|HTMLDivElement,
 	termCallback: DListCallback<K>,
-	detailsCallback: DListCallback<V>
+	detailsCallback: DListCallback<V>,
 ): Map<K, V> {
-	let children: HTMLCollection = element.children;
+	const children: HTMLCollection = element.children;
 	if (children.length === 0) {
 		return new Map<K, V>();
 	}
 
 	let descriptionList = new Map<K, V>();
 	let terms: K[] = [];
-	for (let currentElement of children) {
-	let elementTagName = currentElement.tagName;
+	for (const currentElement of children) {
+		const elementTagName = currentElement.tagName;
 		switch (elementTagName) {
 		case ELEMENT_NAME_DT:
 			terms.push(termCallback(currentElement as HTMLElement));
@@ -33,7 +33,7 @@ export function walkDescriptionList<K,V>(
 			if (currentElement.previousElementSibling?.tagName === ELEMENT_NAME_DT) {
 				terms.forEach(term => descriptionList.set(
 					term,
-					detailsCallback(currentElement as HTMLElement)
+					detailsCallback(currentElement as HTMLElement),
 				));
 				terms = [];
 			}
@@ -44,8 +44,8 @@ export function walkDescriptionList<K,V>(
 				...walkDescriptionList(
 					currentElement as HTMLDivElement,
 					termCallback,
-					detailsCallback
-				)
+					detailsCallback,
+				),
 			]);
 			break;
 		default:
