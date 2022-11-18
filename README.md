@@ -1,4 +1,4 @@
-# @neoncitylights/ts-html-walker
+# @neoncitylights/html-walker
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![GitHub deployments](https://img.shields.io/github/deployments/neoncitylights/ts-html-walker/github-pages?label=deploy)](https://github.com/neoncitylights/ts-html-walker/deployments/activity_log?environment=github-pages)
 [![Node.js workflow](https://github.com/neoncitylights/ts-html-walker/actions/workflows/main.yml/badge.svg)](https://github.com/neoncitylights/ts-html-walker/actions/workflows/main.yml)
@@ -7,7 +7,7 @@ This library provides some utilities for walking through specific HTML elements 
 
 ## Install
 ```
-npm install @neoncitylights/ts-html-walker
+npm install @neoncitylights/html-walker
 ```
 
 ## Usage
@@ -38,7 +38,7 @@ npm install @neoncitylights/ts-html-walker
 ```
 
 ```ts
-import { walkDescriptionList } from '@neoncitylights/ts-html-walker';
+import { walkDescriptionList } from '@neoncitylights/html-walker';
 
 const prefsElement = document.getElementById('prefs') as HTMLDListElement;
 const prefs = walkDescriptionList(prefsElement);
@@ -93,7 +93,7 @@ const prefs = walkDescriptionList(prefsElement);
 ```
 
 ```ts
-import { walkTable } from '@neoncitylights/ts-html-walker';
+import { walkTable } from '@neoncitylights/html-walker';
 
 let timezoneTableElement = document.getElementById('timezone-examples') as HTMLTableElement;
 let timezoneExamples = walkTable(timezoneTableElement);
