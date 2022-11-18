@@ -36,23 +36,33 @@
   <h3>API Reference</h3>
 </a>
 
-<a href="#walkers" id="walkers" style="color: inherit; text-decoration: none;">
-  <h4>Walkers</h4>
+<a href="#walker-functions" id="walker-functions" style="color: inherit; text-decoration: none;">
+  <h4>Walker functions</h4>
 </a>
 <ul>
-<li><a href="#walkDescriptionList">#</a> <strong>walkDescriptionList</strong>&lt;*K*, *V*&gt;(<em>element</em>, <em>termCallback</em>, <em>detailsCallback</em>): <em>Map&lt;K, V&gt;</em> • <a href="./src/walkDescriptionList.ts">source</a></li>
-<li><a href="#walkTable">#</a> <strong>walkTable</strong>(<em>table</em>): <em>TableRow[][]</em> • <a href="./src/walkTable.ts">source</a></li>
+<li><em>fn</em>: <a href="#walkDescriptionList">#</a> walkDescriptionList.<strong>walkDescriptionList</strong>&lt;*K*, *V*&gt;(<em>element</em>, <em>termCallback</em>, <em>detailsCallback</em>): <em>Map&lt;K, V&gt;</em> • <a href="./src/walkDescriptionList.ts">source</a></li>
+<li><em>fn</em>: <a href="#walkTable">#</a> walkTable.<strong>walkTable</strong>(<em>table</em>): <em>TableRow[][]</em> • <a href="./src/walkTable.ts">source</a></li>
+</ul>
+
+<a href="#walker-helper-utilities" id="walker-helper-utilities" style="color: inherit; text-decoration: none;">
+  <h3>Walker helper utilities</h3>
+</a>
+<ul>
+<li><em>T</em>: <a href="#TableBodies">#</a> walkTable.<strong>TableBodies</strong> • <a href="./src/walkTable.ts">source</a></li>
+<li><em>T</em>: <a href="#TableRow">#</a> walkTable.<strong>TableRow</strong> • <a href="./src/walkTable.ts">source</a></li>
+<li><em>fn</em>: <a href="#collectProperties">#</a> walkTable.<strong>collectProperties</strong>(<em>table</em>): <em>string</em>[] • <a href="./src/walkTable.ts">source</a></li>
+<li><em>fn</em>: <a href="#collectTableBodies">#</a> walkTable.<strong>collectTableBodies</strong>(<em>table</em>): <a href="./src/walkTable.ts"><em>TableBodies</em></a> • <a href="./src/walkTable.ts">source</a></li>
+<li><em>fn</em>: <a href="#collectDataRows">#</a> walkTable.<strong>collectRows</strong>(<em>table</em>): <a href="src/walkTable.ts"><em>TableRow</em></a> • <a href="./src/walkTable.ts">source</a></li>
 </ul>
 
 <a href="#table-utilities" id="table-utilities" style="color: inherit; text-decoration: none;">
   <h4>Table utilities</h4>
 </a>
 <ul>
-<li><a href="#isTableRelatedElement">#</a> tableUtils.<strong>isTableRelatedElement</strong>(<em>element</em>): <em>boolean</em> • <a href="./src/tableUtils.ts">source</a></li>
-<li><a href="#getClosestParentTableElement">#</a> tableUtils.<strong>getClosestParentTableElement</strong>(<em>element</em>): <em>HTMLTableElement</em>|<em>undefiend</em> • <a href="./src/tableUtils.ts">source</a></li>
-<li><a href="#getTableCaption">#</a> tableUtils.<strong>getTableCaption</strong>(<em>element</em>): <em>string</em> • <a href="./src/tableUtils.ts">source</a></li>
-<li><a href="#getClosestParentTableElement">#</a> tableUtils.<strong>getClosestParentTableElement</strong>(<em>element</em>): <em>HTMLTableElement</em>|<em>undefiend</em> • <a href="./src/tableUtils.ts">source</a></li>
-<li><a href="#getClosestParentTableElementFromRow">#</a> tableUtils.<strong>getClosestParentTableElementFromRow</strong>(<em>row</em>): <em>HTMLTableElement</em> • <a href="./src/tableUtils.ts">source</a></li>
+<li><em>fn</em>: <a href="#isTableRelatedElement">#</a> tableUtils.<strong>isTableRelatedElement</strong>(<em>element</em>): <em>boolean</em> • <a href="./src/tableUtils.ts">source</a></li>
+<li><em>fn</em>: <a href="#getTableCaption">#</a> tableUtils.<strong>getTableCaption</strong>(<em>element</em>): <em>string</em> • <a href="./src/tableUtils.ts">source</a></li>
+<li><em>fn</em>: <a href="#getClosestParentTableElement">#</a> tableUtils.<strong>getClosestParentTableElement</strong>(<em>element</em>): <em>HTMLTableElement</em>|<em>undefiend</em> • <a href="./src/tableUtils.ts">source</a></li>
+<li><em>fn</em>: <a href="#getClosestParentTableElementFromRow">#</a> tableUtils.<strong>getClosestParentTableElementFromRow</strong>(<em>row</em>): <em>HTMLTableElement</em> • <a href="./src/tableUtils.ts">source</a></li>
 </ul>
 
 <a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
