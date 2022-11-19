@@ -1,7 +1,7 @@
 {
 	"name": "@neoncitylights/html-walker",
 	"version": "0.0.0",
-	"description": "{description}",
+	"description": "TypeScript library to make walking through the DOM easier",
 	"license": "MIT",
 	"author": {
 		"name": "Samantha",
