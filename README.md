@@ -1,6 +1,6 @@
 # @neoncitylights/html-walker
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-![npm (scoped)](https://img.shields.io/npm/v/@neoncitylights/html-walker)
+[![npm (scoped)](https://img.shields.io/npm/v/@neoncitylights/html-walker)](https://www.npmjs.com/package/@neoncitylights/html-walker)
 [![GitHub deployments](https://img.shields.io/github/deployments/neoncitylights/ts-html-walker/github-pages?label=deploy)](https://github.com/neoncitylights/ts-html-walker/deployments/activity_log?environment=github-pages)
 [![Node.js workflow](https://github.com/neoncitylights/ts-html-walker/actions/workflows/main.yml/badge.svg)](https://github.com/neoncitylights/ts-html-walker/actions/workflows/main.yml)
 
