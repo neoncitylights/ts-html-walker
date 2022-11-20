@@ -27,14 +27,12 @@ export type HTMLTableRelatedElement =
  * or `<tfoot>`
  */
 export function isTableRelatedElement(element: any): element is HTMLTableRelatedElement {
-	return (
-		element instanceof HTMLTableElement
+	return element instanceof HTMLTableElement
 		|| element instanceof HTMLTableCaptionElement
 		|| element instanceof HTMLTableSectionElement
 		|| element instanceof HTMLTableColElement
 		|| element instanceof HTMLTableRowElement
-		|| element instanceof HTMLTableCellElement
-	);
+		|| element instanceof HTMLTableCellElement;
 }
 
 /**
