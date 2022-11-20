@@ -11,7 +11,7 @@ export function walkTable(table: HTMLTableElement): TableBodies {
 
 export function collectProperties(table: HTMLTableElement): string[] {
 	const dataProps: string[] = [];
-	const tHeads = table.tHead?.getElementsByTagName('th') as HTMLCollectionOf<HTMLTableHeaderCellElement>;
+	const tHeads = table.tHead?.getElementsByTagName('th') as HTMLCollectionOf<HTMLTableCellElement>;
 
 	Array.from(tHeads).forEach(tHead => {
 		dataProps.push(tHead.innerText);
