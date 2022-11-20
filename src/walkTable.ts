@@ -10,31 +10,31 @@ export function walkTable(table: HTMLTableElement): TableBodies {
 }
 
 export function collectProperties(table: HTMLTableElement): string[] {
-	const dataProps: string[] = [];
+	const properties: string[] = [];
 	const tHeads = table.tHead?.getElementsByTagName('th') as HTMLCollectionOf<HTMLTableCellElement>;
 
 	Array.from(tHeads).forEach(tHead => {
-		dataProps.push(tHead.innerText);
+		properties.push(tHead.innerText);
 	});
 
-	return dataProps;
+	return properties;
 }
 
 export function collectTableBodies(table: HTMLTableElement, properties: string[]): TableBodies {
-	const dataBodies: TableBodies = [];
+	const tableBodies: TableBodies = [];
 
 	Array.from(table.tBodies).forEach(tableBody => {
-		dataBodies.push(collectDataRows(tableBody, properties));
+		tableBodies.push(collectDataRows(tableBody, properties));
 	});
 
-	return dataBodies;
+	return tableBodies;
 }
 
 export function collectDataRows(
 	tableBody: HTMLTableSectionElement,
 	dataProps: string[],
 ): TableRow[] {
-	const dataRows: TableRow[] = [];
+	const tableRows: TableRow[] = [];
 
 	Array.from(tableBody.rows).forEach(tableRow => {
 		const tableCells = tableRow.cells;
@@ -44,8 +44,8 @@ export function collectDataRows(
 			const prop = dataProps[i];
 			dataRow[`${prop}`] = tableCells[i].innerText;
 		}
-		dataRows.push(dataRow);
+		tableRows.push(dataRow);
 	});
 
-	return dataRows;
+	return tableRows;
 }
