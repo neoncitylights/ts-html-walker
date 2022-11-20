@@ -1,20 +1,40 @@
 /**
+ * Strongly typed instance of a table-related element.
+ * 
+ * This explicitly does not include any obsolete table element interfaces,
+ * which currently include:
+ *  - `HTMLTableDataCellElement`
+ *  - `HTMLTableHeaderCellElement`
+ * @see [Deprecation of `HTMLTableDataCellElement` and `HTMLTableHeaderCellElement` - whatwg/html issue #1115](https://github.com/whatwg/html/issues/1115)
+ * @see [`HTMLTableElement` interface specification](https://html.spec.whatwg.org/multipage/tables.html#htmltableelement)
+ * @see [`HTMLTableSectionElement` interface specification](https://html.spec.whatwg.org/multipage/tables.html#htmltablesectionelement)
+ * @see [`HTMLTableCaptionElement` interface specification](https://html.spec.whatwg.org/multipage/tables.html#htmltablecaptionelement)
+ * @see [`HTMLTableColElement` interface specification](https://html.spec.whatwg.org/multipage/tables.html#htmltablecolelement)
+ * @see [`HTMLTableRowElement` interface specification](https://html.spec.whatwg.org/multipage/tables.html#htmltablerowelement)
+ * @see [`HTMLTableCellElement` interface specification](https://html.spec.whatwg.org/multipage/tables.html#htmltablecellelement)
+ */
+export type HTMLTableRelatedElement =
+	| HTMLTableElement // <table>
+	| HTMLTableCaptionElement // <caption>
+	| HTMLTableSectionElement // <thead>, <tbody>, <tfoot>
+	| HTMLTableColElement // <col>, <colgroup>
+	| HTMLTableRowElement // <tr>
+	| HTMLTableCellElement; // <td>, <th>
+
+/**
  * Checks if the element is related to a table. It must be one of the following:
  * `<table>`, `<caption>`, `<colgroup>`, `<thead>`, `<tbody>`, `<tr>`, `<td>`
  * or `<tfoot>`
  */
-export function isTableRelatedElement(element: HTMLElement): boolean {
-	return [
-		'TABLE',
-		'CAPTION',
-		'COLGROUP',
-		'THEAD',
-		'TBODY',
-		'TH',
-		'TR',
-		'TD',
-		'TFOOT',
-	].includes(element.tagName);
+export function isTableRelatedElement(element: any): element is HTMLTableRelatedElement {
+	return (
+		element instanceof HTMLTableElement
+		|| element instanceof HTMLTableCaptionElement
+		|| element instanceof HTMLTableSectionElement
+		|| element instanceof HTMLTableColElement
+		|| element instanceof HTMLTableRowElement
+		|| element instanceof HTMLTableCellElement
+	);
 }
 
 /**
@@ -27,17 +47,17 @@ export function isTableRelatedElement(element: HTMLElement): boolean {
 *
 * If it can't find either, it will return an empty string.
 */
-export function getTableCaption(element: HTMLTableElement): string {
-	if (!(element instanceof HTMLTableElement)) {
+export function getTableCaption(table: HTMLTableElement): string {
+	if (!(table instanceof HTMLTableElement)) {
 		return '';
 	}
 
-	if (element.caption !== null) {
-		return element.caption.textContent ?? '';
+	if (table.caption !== null) {
+		return table.caption.textContent ?? '';
 	}
 
-	if (element.previousElementSibling instanceof HTMLHeadingElement) {
-		return element.previousElementSibling.textContent ?? '';
+	if (table.previousElementSibling instanceof HTMLHeadingElement) {
+		return table.previousElementSibling.textContent ?? '';
 	}
 
 	return '';
@@ -45,17 +65,9 @@ export function getTableCaption(element: HTMLTableElement): string {
 
 /**
  * This method tries to find the closest parent table element
- * of a table-related element by walking through the DOM.
- * If the element is not table-related, it'll return undefined.
- *
- * @param {HTMLElement} element
- * @return {HTMLTableElement|undefined}
+ * of a table-related element by walking up the DOM tree of a table
  */
-export function getClosestParentTableElement(element: HTMLElement): HTMLTableElement|undefined {
-	if (!isTableRelatedElement(element)) {
-		return undefined;
-	}
-
+export function getClosestParentTableElement(element: HTMLTableRelatedElement): HTMLTableElement|undefined {
 	switch (element.tagName) {
 	case 'TABLE':
 		return element as HTMLTableElement;
@@ -68,23 +80,23 @@ export function getClosestParentTableElement(element: HTMLElement): HTMLTableEle
 	case 'COL':
 		return element.parentElement?.parentElement as HTMLTableElement;
 	case 'TR':
-		return getClosestParentTableElementFromRow(element as HTMLTableRowElement) as HTMLTableElement;
+		return getClosestParentTableElementFromRow(element as HTMLTableRowElement);
 	case 'TD':
 	case 'TH':
-		return getClosestParentTableElementFromRow(element.parentElement as HTMLTableRowElement) as HTMLTableElement;
+		return getClosestParentTableElementFromRow(element.parentElement as HTMLTableRowElement);
 	default:
 		return undefined;
 	}
 }
 
 /**
- * @param {HTMLTableRowElement} rowElement
- * @return {HTMLTableElement}
+ * Attempts to find the closest parent table element (`<table>`),
+ * given an instance of a row element (`<tr>`)
  */
-export function getClosestParentTableElementFromRow(rowElement: HTMLTableRowElement): HTMLTableElement {
-	if (rowElement.parentElement instanceof HTMLTableElement) {
-		return rowElement.parentElement;
+export function getClosestParentTableElementFromRow(row: HTMLTableRowElement): HTMLTableElement {
+	if (row.parentElement instanceof HTMLTableElement) {
+		return row.parentElement;
 	}
 
-	return rowElement.parentElement?.parentElement as HTMLTableElement;
+	return row.parentElement?.parentElement as HTMLTableElement;
 }

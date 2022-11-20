@@ -27,8 +27,9 @@ npm install @neoncitylights/html-walker
  * `fn`: <a href="#collectDataRows">#</a> walkTable.**collectRows**(*table*): [*TableRow*](src/walkTable.ts) • [source](./src/walkTable.ts)
 
 #### Table utilities
- * `fn`: <a href="#isTableRelatedElement">#</a> tableUtils.**isTableRelatedElement**(*element*): *boolean* • [source](./src/tableUtils.ts)
- * `fn`: <a href="#getTableCaption">#</a> tableUtils.**getTableCaption**(*element*): *string* • [source](./src/tableUtils.ts)
+ * `T`: <a href="#HTMLTableRelatedElement">#</a> tableUtils.**HTMLTableRelatedElement** • [source](./src/tableUtils.ts)
+ * `fn`: <a href="#isTableRelatedElement">#</a> tableUtils.**isTableRelatedElement**(*element*): *element* is *HTMLTableRelatedElement* • [source](./src/tableUtils.ts)
+ * `fn`: <a href="#getTableCaption">#</a> tableUtils.**getTableCaption**(*table*): *string* • [source](./src/tableUtils.ts)
  * `fn`: <a href="#getClosestParentTableElement">#</a> tableUtils.**getClosestParentTableElement**(*element*): *HTMLTableElement*|*undefiend* • [source](./src/tableUtils.ts)
  * `fn`: <a href="#getClosestParentTableElementFromRow">#</a> tableUtils.**getClosestParentTableElementFromRow**(*row*): *HTMLTableElement* • [source](./src/tableUtils.ts)
 
