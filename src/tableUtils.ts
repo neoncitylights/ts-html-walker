@@ -48,10 +48,6 @@ export function isTableRelatedElement(element: any): element is HTMLTableRelated
 * If it can't find either, it will return an empty string.
 */
 export function getTableCaption(table: HTMLTableElement): string {
-	if (!(table instanceof HTMLTableElement)) {
-		return '';
-	}
-
 	if (table.caption !== null) {
 		return table.caption.textContent ?? '';
 	}
