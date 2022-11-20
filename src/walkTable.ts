@@ -24,13 +24,13 @@ export function collectTableBodies(table: HTMLTableElement, properties: string[]
 	const tableBodies: TableBodies = [];
 
 	Array.from(table.tBodies).forEach(tableBody => {
-		tableBodies.push(collectDataRows(tableBody, properties));
+		tableBodies.push(collectTableRows(tableBody, properties));
 	});
 
 	return tableBodies;
 }
 
-export function collectDataRows(
+export function collectTableRows(
 	tableBody: HTMLTableSectionElement,
 	dataProps: string[],
 ): TableRow[] {

@@ -24,7 +24,7 @@ npm install @neoncitylights/html-walker
  * `T`: <a href="#TableRow">#</a> walkTable.**TableRow** • [source](./src/walkTable.ts)
  * `fn`: <a href="#collectProperties">#</a> walkTable.**collectProperties**(*table*): *string*[] • [source](./src/walkTable.ts)
  * `fn`: <a href="#collectTableBodies">#</a> walkTable.**collectTableBodies**(*table*): [*TableBodies*](./src/walkTable.ts) • [source](./src/walkTable.ts)
- * `fn`: <a href="#collectDataRows">#</a> walkTable.**collectRows**(*table*): [*TableRow*](src/walkTable.ts) • [source](./src/walkTable.ts)
+ * `fn`: <a href="#collectTableRows">#</a> walkTable.**collectTableRows**(*table*): [*TableRow*](src/walkTable.ts) • [source](./src/walkTable.ts)
 
 #### Table utilities
  * `T`: <a href="#HTMLTableRelatedElement">#</a> tableUtils.**HTMLTableRelatedElement** • [source](./src/tableUtils.ts)
