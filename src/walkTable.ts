@@ -32,19 +32,19 @@ export function collectTableBodies(table: HTMLTableElement, properties: string[]
 
 export function collectTableRows(
 	tableBody: HTMLTableSectionElement,
-	dataProps: string[],
+	properties: string[],
 ): TableRow[] {
 	const tableRows: TableRow[] = [];
 
 	Array.from(tableBody.rows).forEach(tableRow => {
 		const tableCells = tableRow.cells;
-		const dataRow: TableRow = {};
+		const row: TableRow = {};
 
 		for (let i = 0; i < tableCells.length; i++) {
-			const prop = dataProps[i];
-			dataRow[`${prop}`] = tableCells[i].innerText;
+			const prop = properties[i];
+			row[`${prop}`] = tableCells[i].innerText;
 		}
-		tableRows.push(dataRow);
+		tableRows.push(row);
 	});
 
 	return tableRows;
