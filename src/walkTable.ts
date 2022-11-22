@@ -42,7 +42,7 @@ export function collectProperties(table: HTMLTableElement): string[] {
 	assertHtmlCollectionHasChildren(firstRowCells, 'No table cells found in first row');
 
 	// the table header cells actually exist, time to collect them
-	for(let cell of firstRowCells) {
+	for(const cell of firstRowCells) {
 		properties.push(cell.innerText);
 	}
 
