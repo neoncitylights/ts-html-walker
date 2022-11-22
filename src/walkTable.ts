@@ -1,7 +1,13 @@
 export type TableRow = { [ key: string ]: string };
 export type TableBodies = TableRow[][];
 
-export class WalkTableError extends Error {}
+/**
+ * From the **WHATWG HTML Living Standard**, "*a table model error is an error
+ * with the data represented by table elements and their descendants.
+ * Documents must not have table model errors*".
+ * @see [WHATWG HTML Living Standard § 'Table model error'](https://html.spec.whatwg.org/multipage/tables.html#table-model-error)
+ */
+export class TableModelError extends Error {}
 
 /**
  * Traverses an HTML table and converts it to machine-readable data.
@@ -51,7 +57,7 @@ export function collectProperties(table: HTMLTableElement): string[] {
 
 function assertHtmlCollectionHasChildren<T extends HTMLElement>(collection: HTMLCollectionOf<T>, message: string): void {
 	if(collection.length === 0) {
-		throw new WalkTableError('Cannot collect properties: ' + message);
+		throw new TableModelError('Cannot collect properties: ' + message);
 	}
 }
 
@@ -77,7 +83,8 @@ export function collectTableRows(
 
 		for (let i = 0; i < tableCells.length; i++) {
 			const prop = properties[i];
-			row[`${prop}`] = tableCells[i].innerText;
+			const cell = tableCells[i];
+			row[`${prop}`] = cell.innerText;
 		}
 		tableRows.push(row);
 	});
